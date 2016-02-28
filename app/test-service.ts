@@ -1,5 +1,5 @@
 import { Injectable } from 'angular2/core';
-import { MockData } from './mock-data';
+import { MockData, MockData2 } from './mock-data';
 import { MockInterface } from './mock-interface';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class TestService {
 
     getMockSlowly() {
         return new Promise<MockInterface[]>(resolve =>
-            setTimeout(() => resolve(MockData), 2000)
+            setTimeout(() => resolve(MockData2), 2000)
         );
     }
 }

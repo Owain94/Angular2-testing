@@ -3,6 +3,7 @@ import { HelloWorld } from './hello-world';
 import { Test } from './test';
 import { TestService } from './test-service';
 import { MockInterface } from './mock-interface';
+import { MockDetails } from './mock-details';
 
 @Component({
     selector: 'app',
@@ -11,19 +12,20 @@ import { MockInterface } from './mock-interface';
         <hello-world></hello-world>
 
         <ul class="mockdata">
-            <li *ngFor="#d of data">
-                <span class="badge">{{d.id}}</span> {{d.name}}
+            <li *ngFor="#d of data" (click)="onSelect(d)">
+                <span class="badge">{{ d.id }}</span> {{ d.name }}
             </li>
         </ul>
 
         <ul class="mockdata">
-            <li *ngFor="#d of dataSlow">
-                <span class="badge">{{d.id}}</span> {{d.name}}
+            <li *ngFor="#d of dataSlow" (click)="onSelect(d)">
+                <span class="badge">{{ d.id }}</span> {{ d.name }}
             </li>
         </ul>
 
+        <mock-detail [data]="selectedData"></mock-detail>
     `,
-    directives: [ HelloWorld, Test ],
+    directives: [ HelloWorld, Test, MockDetails ],
     providers: [ TestService ],
     styles:[`
     .mockdata {
@@ -66,7 +68,14 @@ export class App implements OnInit {
     data: MockInterface[];
     dataSlow: MockInterface[];
 
+    selectedData: MockInterface;
+
     constructor(private _testService: TestService) { }
+
+    ngOnInit() {
+        this.getdata();
+        this.getdataSlowly();
+    }
 
     getdata() {
         this._testService.getMockData().then(data => this.data = data);
@@ -76,8 +85,7 @@ export class App implements OnInit {
         this._testService.getMockSlowly().then(data => this.dataSlow = data);
     }
 
-    ngOnInit() {
-        this.getdata();
-        this.getdataSlowly();
+    onSelect(data: MockInterface) {
+        this.selectedData = data;
     }
 }
