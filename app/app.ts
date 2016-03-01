@@ -4,11 +4,12 @@ import { Test } from './test';
 import { TestService } from './test-service';
 import { MockInterface } from './mock-interface';
 import { MockDetails } from './mock-details';
+import { Circle } from './circle';
 
 @Component({
     selector: 'app',
     templateUrl: '../templates/app.html',
-    directives: [ HelloWorld, Test, MockDetails ],
+    directives: [ HelloWorld, Test, MockDetails, Circle ],
     providers: [ TestService ],
     styleUrls: [ '../css/app.css' ]
 })
