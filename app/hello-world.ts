@@ -2,7 +2,7 @@ import { Component } from 'angular2/core';
 
 @Component({
     selector: 'hello-world',
-    template: `<h2>Hello, {{ message }}</h2>`
+    templateUrl: '../templates/hello-world.html'
 })
 
 export class HelloWorld {

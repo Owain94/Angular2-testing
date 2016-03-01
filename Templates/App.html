@@ -1,0 +1,16 @@
+<test></test>
+<hello-world></hello-world>
+
+<ul class="mockdata">
+    <li *ngFor="#d of data" (click)="onSelect(d)">
+        <span class="badge">{{ d.id }}</span> {{ d.name }}
+    </li>
+</ul>
+
+<ul class="mockdata">
+    <li *ngFor="#d of dataSlow" (click)="onSelect(d)">
+        <span class="badge">{{ d.id }}</span> {{ d.name }}
+    </li>
+</ul>
+
+<mock-detail [data]="selectedData"></mock-detail>
