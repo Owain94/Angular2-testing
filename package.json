@@ -11,7 +11,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "angular2": "2.0.0-beta.17",
+    "angular2": "2.0.0-beta.18",
     "systemjs": "0.19.41",
     "es6-promise": "^4.0.5",
     "es6-shim": "^0.35.1",
